@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Fonts styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Londrina+Outline&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="assests/css/style.css" />
+    <!-- <link rel="stylesheet" href="assests/css/mediaquery.css"> -->
+    <title>Break Timer</title>
+  </head>
+  <body>
+    <div class="stars" id="stars"></div>
+
+    <!-- svg  -->
+
+    <div class="planet planet-1"></div>
+    <div class="planet planet-2">
+      <img src="assests/img/planet-2.svg" alt=" pianeta svg" />
+    </div>
+
+    <div class="ufo">
+      <img src="assests/img/ufo2.svg" alt="ufo" />
+    </div>
+
+    <div class="ufo-2">
+      <img src="assests/img/ufo2.svg" alt="ufo" />
+    </div>
+
+    <div class="rocket">
+      <img src="assests/img/rocket.svg" alt="roket" />
+    </div>
+
+    <div class="astronaut">
+      <img src="assests/img/astronauta.svg" alt="astronauta" />
+    </div>
+
+    <div class="container">
+      <p class="data-odierna" id="data-odierna"></p>
+      <h1 class="heading">Siamo in Pausa</h1>
+      <p class="subHeading"><span id="ora-pausa"></span></p>
+
+      <!-- Nuova sezione per gli orari -->
+
+      <div class="time-info" id="time-info">
+        <div class="time-item">
+          <div class="time-label">Inizio Pausa</div>
+          <div class="time-value" id="start-time">--:--</div>
+        </div>
+        <div class="time-item">
+          <div class="time-label">Fine Pausa</div>
+          <div class="time-value" id="end-time">--:--</div>
+        </div>
+      </div>
+
+      <!-- sezione timer -->
+
+      <div class="timer-container">
+        <div class="timer">
+          <div class="time-unit">
+            <div id="minutes">15</div>
+          </div>
+          <div class="separator">:</div>
+          <div class="time-unit">
+            <div id="seconds">00</div>
+          </div>
+        </div>
+
+        <div class="progress-container">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <div class="message">Rilassati e ricarica le energie</div>
+
+        <div class="controls">
+          <button id="start-btn">Inizia</button>
+          <button id="reset-btn">Reset</button>
+        </div>
+      </div>
+
+      <!-- messaggio finale  -->
+
+      <div class="end-message" id="end-message">
+        <div class="end-message-content">
+          <h2>Pausa Terminata!</h2>
+          <p>È ora di tornare al lavoro!</p>
+          <button class="close-btn" id="close-message-btn">Chiudi</button>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p class="subFooter">&copy; 2025 ChrisMann. Corso FrontEnd Developer.</p>
+    </footer>
+
+    <script src="assests/js/app.js"></script>
+  </body>
+</html>
