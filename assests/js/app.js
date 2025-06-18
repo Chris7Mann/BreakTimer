@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
   createStars();
 
   // Settaggio Data Odierna
-
   const formattaData = (data) => {
     const giorno = String(data.getDate()).padStart(2, "0");
     const mese = String(data.getMonth() + 1).padStart(2, "0");
@@ -40,24 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const dataFormattata = formattaData(dataDaFormattare);
 
   document.querySelector("#data-odierna").textContent = dataFormattata;
-
-  // Settaggio Ora Attuale
-
-  const timeOptions = {
-    hour: "2-digit",
-    minute: "2-digit",
-  };
-
-  const orari = () => {
-    startHour = new Date();
-    endHour = new Date(startHour.getTime() + 15 * 60000);
-
-    const start = document.querySelector("#start-time");
-    const end = document.querySelector("#end-time");
-
-    start.textContent = startHour.toLocaleTimeString("it-IT", timeOptions);
-    end.textContent = endHour.toLocaleTimeString("it-IT", timeOptions);
-  };
 
   // Timer functionality
   const TOTAL_TIME = 15 * 60; // 15 minutes in seconds
@@ -92,6 +73,15 @@ document.addEventListener("DOMContentLoaded", function () {
     return end;
   };
 
+  // Funzione per calcolare e mostrare gli orari attuali
+  const calculateCurrentTimes = () => {
+    const now = new Date();
+    const endNow = new Date(now.getTime() + TOTAL_TIME * 1000);
+    
+    startTimeDisplay.textContent = formatTime(now);
+    endTimeDisplay.textContent = formatTime(endNow);
+  };
+
   const updateDisplay = () => {
     const minutes = Math.floor(timeLeft / 60);
     const seconds = timeLeft % 60;
@@ -104,15 +94,13 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   const updateTimeDisplay = () => {
-    if (startTime) {
+    if (startTime && endTime) {
+      // Se il timer è stato avviato, mostra gli orari effettivi
       startTimeDisplay.textContent = formatTime(startTime);
       endTimeDisplay.textContent = formatTime(endTime);
-      timeInfo.classList.add("show");
     } else {
-         // togli i commenti se non vuoi visualizzare da subito l'ora esatta
-      // startTimeDisplay.textContent = start;
-      // endTimeDisplay.textContent = end;
-      // timeInfo.classList.remove("show");
+      // Se il timer non è stato avviato, mostra gli orari attuali
+      calculateCurrentTimes();
     }
   };
 
@@ -164,7 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
     endTime = null;
     startBtn.textContent = "Inizia";
     updateDisplay();
-    updateTimeDisplay();
+    updateTimeDisplay(); // Questo ora mostrerà gli orari aggiornati all'ora attuale
   };
 
   // Event listeners
@@ -172,11 +160,16 @@ document.addEventListener("DOMContentLoaded", function () {
   resetBtn.addEventListener("click", resetTimer);
   closeMessageBtn.addEventListener("click", hideEndMessage);
 
-
   // Initialize
-  orari();
   updateDisplay();
   updateTimeDisplay();
+
+  // Aggiorna gli orari ogni secondo anche quando il timer non è attivo
+  setInterval(() => {
+    if (!startTime) {
+      calculateCurrentTimes();
+    }
+  }, 1000);
 
   
 });
