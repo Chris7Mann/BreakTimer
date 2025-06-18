@@ -110,9 +110,9 @@ document.addEventListener("DOMContentLoaded", function () {
       timeInfo.classList.add("show");
     } else {
          // togli i commenti se non vuoi visualizzare da subito l'ora esatta
-      // startTimeDisplay.textContent = start;
-      // endTimeDisplay.textContent = end;
-      // timeInfo.classList.remove("show");
+      startTimeDisplay.textContent = '--:--';
+      endTimeDisplay.textContent = '--:--';
+      timeInfo.classList.remove("show");
     }
   };
 
