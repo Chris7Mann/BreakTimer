@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const progressBar = document.getElementById("progress-bar");
   const endMessage = document.getElementById("end-message");
   const closeMessageBtn = document.getElementById("close-message-btn");
-  const timeInfo = document.getElementById("time-info");
+  // const timeInfo = document.getElementById("time-info");
   const startTimeDisplay = document.getElementById("start-time");
   const endTimeDisplay = document.getElementById("end-time");
 
@@ -171,5 +171,4 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }, 1000);
 
-  
 });
